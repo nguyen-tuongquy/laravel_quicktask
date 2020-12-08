@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//Admin routes  
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::get('', 'StudentController@index');
+    
+    //Student management's routes
+        Route::resource('student', 'StudentController');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
